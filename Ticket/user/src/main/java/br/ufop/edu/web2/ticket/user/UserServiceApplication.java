@@ -1,15 +1,14 @@
-package br.ufop.web2.HelloWorld;
+package br.ufop.edu.web2.ticket.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloWorldApplication {
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloWorldApplication.class, args);
 
-		System.out.println("Hello World!");
+		SpringApplication.run(UserServiceApplication.class, args);
 
 	}
 
