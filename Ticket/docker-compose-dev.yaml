@@ -1,0 +1,12 @@
+# version: '3' -> obsoleto
+services:
+  databaseserver-ticket:
+    image: postgres:16-alpine
+    ports:
+      # HOST: CONTAINER
+      - "9000:5432"
+    environment:
+      - POSTGRES_USER=luccas
+      - POSTGRES_PASSWORD=17111998
+    volumes:
+      - "./01-create-database-users.sql:/docker-entrypoint-initdb.d/01-create-database-users.sql"
