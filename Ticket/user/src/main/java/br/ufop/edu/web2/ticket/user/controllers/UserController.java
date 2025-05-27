@@ -11,7 +11,7 @@ public class UserController {
 
     @GetMapping("/users/status")
     public ResponseEntity<String> getAllUsers() {
-        return ResponseEntity.ok("Service is running");
+        return ResponseEntity.ok("Hello There - Service is running");
     }
 
 
