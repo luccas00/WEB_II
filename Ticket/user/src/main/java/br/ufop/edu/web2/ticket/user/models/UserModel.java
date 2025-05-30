@@ -2,6 +2,8 @@ package br.ufop.edu.web2.ticket.user.models;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.mapping.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
+@Setter
+@Getter
 public class UserModel {
 
     @Id
@@ -21,6 +25,11 @@ public class UserModel {
 
     private String email;
     private String password;
+
+    private String city;
+
+    private String statusName;
+    private int status;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
