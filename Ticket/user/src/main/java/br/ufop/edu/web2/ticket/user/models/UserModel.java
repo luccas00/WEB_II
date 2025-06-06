@@ -2,8 +2,7 @@ package br.ufop.edu.web2.ticket.user.models;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.mapping.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -13,6 +12,9 @@ import java.util.UUID;
 @Table(name = "tb_users")
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserModel {
 
     @Id
@@ -26,6 +28,7 @@ public class UserModel {
     private String email;
     private String password;
 
+    @Column(nullable = true)
     private String city;
 
     private String statusName;
