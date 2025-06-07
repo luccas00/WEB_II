@@ -1,6 +1,6 @@
 # version: '3' -> obsoleto
 services:
-  ticketServer:
+  postgres:
     image: postgres:16-alpine
     ports:
       # HOST: CONTAINER
@@ -9,8 +9,7 @@ services:
       - POSTGRES_USER=luccas
       - POSTGRES_PASSWORD=17111998
     volumes:
-      - "./01-create-database-produtos.sql:/docker-entrypoint-initdb.d/01-create-database-produtos.sql"
-      - "./02-create-database-usuarios.sql:/docker-entrypoint-initdb.d/02-create-database-usuarios.sql"
+      - "./initpostgre.sql:/docker-entrypoint-initdb.d/initpostgre.sql"
     networks:
       - backend
 
