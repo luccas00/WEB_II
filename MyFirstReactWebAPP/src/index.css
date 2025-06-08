@@ -1,0 +1,42 @@
+nav {
+  background-color: #121212;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav a {
+  color: #e0e0e0;
+  margin-right: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #1db954; /* verde vibrante */
+  border-bottom: 2px solid #1db954;
+  outline: none;
+}
+
+h1 {
+  color: #eeeeee;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.navbar-brand {
+  padding-left: 1rem; /* ou margin-left, conforme preferir */
+}

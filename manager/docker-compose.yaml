@@ -1,0 +1,30 @@
+# version: '3' -> obsoleto
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      # HOST: CONTAINER
+      - "9000:5432"
+    environment:
+      - POSTGRES_USER=luccas
+      - POSTGRES_PASSWORD=17111998
+    volumes:
+      - "./initpostgre.sql:/docker-entrypoint-initdb.d/initpostgre.sql"
+    networks:
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4:9.3.0
+    ports:
+      - "8123:80"
+      - "8443:443"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=web@ufop.edu.br
+      - PGADMIN_DEFAULT_PASSWORD=17111998
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+  global:

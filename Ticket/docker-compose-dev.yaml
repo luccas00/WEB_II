@@ -1,0 +1,32 @@
+# version: '3' -> obsoleto
+services:
+  ticketServer:
+    image: postgres:16-alpine
+    ports:
+      # HOST: CONTAINER
+      - "9000:5432"
+    environment:
+      - POSTGRES_USER=luccas
+      - POSTGRES_PASSWORD=17111998
+    volumes:
+      - "./01-create-database-users.sql:/docker-entrypoint-initdb.d/01-create-database-users.sql"
+      - "./02-create-database-sales.sql:/docker-entrypoint-initdb.d/02-create-database-sales.sql"
+      - "./03-create-database-notifications.sql:/docker-entrypoint-initdb.d/03-create-database-notifications.sql"
+    networks:
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4:9.3.0
+    ports:
+      - "8123:80"
+      - "8443:443"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=web@ufop.edu.br
+      - PGADMIN_DEFAULT_PASSWORD=17111998
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+  global:

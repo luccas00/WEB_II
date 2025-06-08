@@ -1,0 +1,4 @@
+CREATE USER "mestre" WITH PASSWORD '1234';
+
+CREATE DATABASE "geral";
+ALTER DATABASE "geral" OWNER TO "mestre"
