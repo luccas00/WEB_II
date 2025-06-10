@@ -31,6 +31,9 @@ public class UsuariosConverter {
                 .senha(domain.getSenha())
                 .CPF(domain.getCPF())
                 .celular(domain.getCelular())
+                .cep(domain.getCep())
+                .bairro(domain.getBairro())
+                .endereco(domain.getEndereco())
                 .cidade(domain.getCidade())
                 .estado(domain.getEstado())
                 .build();
@@ -45,8 +48,11 @@ public class UsuariosConverter {
                 .senha(createUsuarioDTO.getSenha())
                 .CPF(createUsuarioDTO.getCPF())
                 .celular(createUsuarioDTO.getCelular())
-                .cidade(createUsuarioDTO.getCidade())
+                .cep(createUsuarioDTO.getCep())
                 .estado(createUsuarioDTO.getEstado())
+                .cidade(createUsuarioDTO.getCidade())
+                .bairro(createUsuarioDTO.getBairro())
+                .endereco(createUsuarioDTO.getEndereco())
                 .build();
     }
 

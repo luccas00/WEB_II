@@ -3,11 +3,11 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Usuarios from './pages/Usuarios';
+import Usuarios from './pages/usuarios/Usuarios';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import UsuariosSuper from './pages/UsuariosSuper';
-
+import UsuariosSuper from './pages/usuarios/UsuariosSuper';
+import UsuarioCreateForm from './pages/usuarios/UsuarioCreateForm';
 
 function Home() {
   return (
@@ -65,6 +65,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/usuarios/super" element={<UsuariosSuper />} />
+        <Route path="/usuarios/new" element={<UsuarioCreateForm />} />
       </Routes>
     </div>
   );

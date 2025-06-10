@@ -3,15 +3,13 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import UsuariosSuper from './UsuariosSuper';
 
-
-
 export default function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3030/usuarios')
+    fetch('http://localhost:9030/usuarios')
       .then((res) => {
         if (!res.ok) throw new Error('Erro ao buscar usuários');
         return res.json();
@@ -32,15 +30,26 @@ export default function Usuarios() {
   return (
     <div>
       <h1 className="text-center mb-4">Usuários</h1>
-      <div className="navbar-nav mb-3">
+      <div className="d-flex justify-content-between mb-3">
         <Link
           to="/usuarios/super"
           className="btn btn-primary"
-          style={{ width: '5cm', display: 'inline-block' }}
+          style={{ width: '5cm' }}
         >
           Usuários Super
         </Link>
+
+        <Link
+          to="/usuarios/new"
+          className="btn btn-success"
+          style={{ width: '5cm' }}
+        >
+          Novo Usuário
+        </Link>
       </div>
+
+
+      
 
       <table className="table table-striped table-bordered">
         <thead className="table-dark">

@@ -28,8 +28,11 @@ public class UsuariosDomain {
     private String senha;
     private String celular;
 
-    private String cidade;
+    private String cep;
     private String estado;
+    private String cidade;
+    private String bairro;
+    private String endereco;
 
     @Enumerated(EnumType.STRING)
     private Status status;

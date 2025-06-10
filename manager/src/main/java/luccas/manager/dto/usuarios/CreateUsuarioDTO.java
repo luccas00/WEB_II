@@ -23,7 +23,10 @@ public class CreateUsuarioDTO {
     private String senha;
     private String celular;
 
-    private String cidade;
+    private String cep;
     private String estado;
+    private String cidade;
+    private String bairro;
+    private String endereco;
 
 }
