@@ -1,11 +1,14 @@
 package br.ufop.edu.web2.ticket.user.models;
 
 
+import br.ufop.edu.web2.ticket.user.enums.EnumUserStatus;
+import br.ufop.edu.web2.ticket.user.enums.EnumUserType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.mapping.PrimaryKey;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,9 +24,9 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String name;
+    private UUID key;
 
-    private String creditCardNumber;
+    private String name;
 
     private String email;
     private String password;
@@ -31,8 +34,11 @@ public class UserModel {
     @Column(nullable = true)
     private String city;
 
-    private String statusName;
-    private int status;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CreditCardModel> creditCards = new ArrayList<>();
+
+    private EnumUserType userType;
+    private EnumUserStatus status;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -47,4 +53,6 @@ public class UserModel {
     public void antesAtualizar() {
         this.updatedAt = LocalDateTime.now();
     }
+
+
 }

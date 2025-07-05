@@ -58,7 +58,7 @@ export default function UsuarioCreateForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:9030/usuarios/new', {
+    fetch('http://localhost:3000/usuarios/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

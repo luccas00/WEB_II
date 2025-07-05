@@ -7,7 +7,7 @@ export default function UsuariosSuper() {
   const [usuarioSelecionado, setUsuarioSelecionado] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:9030/usuarios/super', {
+    fetch('http://localhost:3000/usuarios/super', {
       method: 'GET', // Ajuste para GET se não precisar enviar corpo
       headers: { 'Content-Type': 'application/json' },
     })

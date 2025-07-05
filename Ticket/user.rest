@@ -1,0 +1,102 @@
+### GET request to print a message
+GET http://localhost:3000
+
+### POST request to encrypt password
+POST http://localhost:3000/encrypt
+
+### POST request to dencrip password
+POST http://localhost:3000/decript
+
+### GET request to retrieve all userRecordDTO
+GET http://localhost:3000/users
+
+### GET request to retrieve all userModel (All Fields)
+GET http://localhost:3000/users/super
+
+### GET request to print a message
+GET http://localhost:3000/users/status
+
+### POST request to create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Luccas Vinicius",
+  "creditCardNumber": "1234",
+  "creditCardNetworkId": "9f19e205-bb69-4ffc-a0a4-2241dc828440",
+  "userType": "ADMINISTRATOR",
+  "status": "ACTIVE",
+  "email": "luccas@example.com",
+  "password": "senhaSegura123",
+  "city": "Ouro Preto"
+}
+
+
+### GET request to retrieve a user by id
+GET http://localhost:3000/users/{id}
+
+
+### GET request to retrieve a user by id
+GET http://localhost:3000/users/getById
+
+Content-Type: application/json
+{
+  "id": "7e1a0e6d-3c4e-4c77-9c4d-3b4f5e9e7a1b"
+}
+
+
+### GET request to retrieve a list of users that contains the given string
+GET http://localhost:3000/users/containsName/{string}
+
+
+### GET request to retrieve a list of users that contains the given string
+GET http://localhost:3000/users/getByName/{string}
+
+
+### ### PUT request to update a user Credit Card Number
+PUT http://localhost:3000/users/update
+Content-Type: application/json
+
+{
+    "id": "b883548b-6a12-44f3-a8c5-1de35e114a96",
+    "name": "Luccas Vinicius",
+    "creditCardNumber": "1"
+}
+
+
+### PUT request to update a user password
+PUT http://localhost:3000/users/password
+Content-Type: application/json
+
+{
+  "id": "588ed3bb-9a32-45ba-bdf0-2c6ccc70509b",
+  "email": "luccas@example.com",
+  "oldPassword": "senhaSegura123",
+  "newPassword": "1"
+
+}
+
+
+### DELETE request to remove a user
+DELETE http://localhost:3000/users/remove
+Content-Type: application/json
+
+{
+  "id": "02c95281-bfa8-4859-93dc-1508ed511901"
+}
+
+
+### GET request to retrieve all Credit Card Network
+GET http://localhost:3000/cnn
+
+
+### POST request to create a Credit Card Network
+POST http://localhost:3000/ccn
+Content-Type: application/json
+
+{
+  "name": "Visa"
+}
+
+
+

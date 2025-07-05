@@ -15,7 +15,8 @@ public class UserServiceApplication {
 
 		SpringApplication.run(UserServiceApplication.class, args);
 
-		System.out.println("Hello World!");
+		System.out.println("Hello There...");
+		System.out.println("User Service Application is running...");
 
 //		String nome = "Luccas";
 //		int idade = 21;

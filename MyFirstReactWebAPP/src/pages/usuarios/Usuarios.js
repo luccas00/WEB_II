@@ -9,7 +9,7 @@ export default function Usuarios() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:9030/usuarios')
+    fetch('http://localhost:3000/users')
       .then((res) => {
         if (!res.ok) throw new Error('Erro ao buscar usuários');
         return res.json();

@@ -1,19 +1,15 @@
 package br.ufop.edu.web2.ticket.user.controllers;
 
-import br.ufop.edu.web2.ticket.user.domain.UserDomain;
-import br.ufop.edu.web2.ticket.user.dtos.CreateUserRecordDTO;
-import br.ufop.edu.web2.ticket.user.dtos.UserRecordDTO;
+import br.ufop.edu.web2.ticket.user.converter.UserConverter;
+import br.ufop.edu.web2.ticket.user.dtos.*;
+import br.ufop.edu.web2.ticket.user.models.UserModel;
 import br.ufop.edu.web2.ticket.user.service.UserService;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.View;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -29,19 +25,23 @@ public class UserController {
 
     }
 
+    @GetMapping("/super")
+    public ResponseEntity<List<UserSuperRecordDTO>> getUsersModels() {
+        List<UserSuperRecordDTO> result = userService.getAllUsersModels()
+                .stream()
+                .map(UserConverter::toUserSuperRecordDTO)
+                .toList();
+        return ResponseEntity.ok(result);
+    }
+
+
     @GetMapping("/status")
     public ResponseEntity<String> getUserStatus() {
         return ResponseEntity.ok("Hello There - Service is running");
     }
 
-    @GetMapping("/users/report")
-    public ResponseEntity<String> getUserReport() {
-        return ResponseEntity.ok("This is My Report");
-    }
-
     @PostMapping
-    public ResponseEntity<UserRecordDTO> createUser(@RequestBody CreateUserRecordDTO user) {
-
+    public ResponseEntity<UserRecordDTO> createUser(@RequestBody CreateUserDTO user) {
         UserRecordDTO createdUser = userService.createUser(user);
         return ResponseEntity.ok(createdUser);
     }
@@ -82,5 +82,41 @@ public class UserController {
         return ResponseEntity.ok(users);
 
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<UserRecordDTO> updateUser(@RequestBody UpdateUserDTO updateUserDTO) {
+
+        UserRecordDTO simpleUserRecordDTO = userService.updateUser(updateUserDTO);
+
+        if (simpleUserRecordDTO == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(simpleUserRecordDTO);
+
+    }
+
+    @PutMapping("/password")
+    public ResponseEntity<UserRecordDTO> updateUserPassword(@RequestBody UpdateUserPasswordDTO updateUserPasswordDTO) {
+
+        UserRecordDTO simpleUserRecordDTO = userService.updateUserPassword(updateUserPasswordDTO);
+
+        if (simpleUserRecordDTO == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(simpleUserRecordDTO);
+
+    }
+
+    @DeleteMapping("/remove")
+    public ResponseEntity<Object> deleteUser(@RequestBody DeleteUserDTO deleteUserDTO) {
+
+        userService.deleteUser(deleteUserDTO);
+        return ResponseEntity.ok("User has been deleted.");
+
+    }
+
+
 
 }
