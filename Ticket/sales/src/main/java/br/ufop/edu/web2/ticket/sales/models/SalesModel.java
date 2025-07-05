@@ -35,7 +35,10 @@ public class SalesModel {
     private UUID id;
 
     private UUID user_id;
-    private UUID event_id;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private EventsModel event;
 
     private LocalDateTime purchaseDate;
     private EnumSalesStatus purchaseStatus;

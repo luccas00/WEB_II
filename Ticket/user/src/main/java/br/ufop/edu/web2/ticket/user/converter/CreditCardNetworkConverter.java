@@ -4,7 +4,11 @@ import br.ufop.edu.web2.ticket.user.domain.CreditCardNetworkDomain;
 import br.ufop.edu.web2.ticket.user.dtos.creditcardnetwork.CreateCreditCardNetworkDTO;
 import br.ufop.edu.web2.ticket.user.dtos.creditcardnetwork.CreditCardNetworkRecordDTO;
 import br.ufop.edu.web2.ticket.user.models.CreditCardNetworkModel;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CreditCardNetworkConverter {
 
     // Conversão do modelo (jpa) para o DTO de saída

@@ -19,7 +19,7 @@ public class HomeController {
 
     @GetMapping()
     public ResponseEntity<String> home() {
-        return ResponseEntity.ok("Status of Service is: Online");
+        return ResponseEntity.ok("Status of User Service is: Online");
     }
 
     @PostMapping("/decript")
