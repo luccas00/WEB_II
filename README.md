@@ -33,6 +33,14 @@ Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)**
 
 ---
 
+## 🚪 Portas
+
+- User Application: 3000
+- Sales Application: 4000
+- React Web App: 3001
+
+---
+
 ## 👨‍💻 Disciplina
 
 **CSI607-25.1 – Sistemas Web II**
