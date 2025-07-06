@@ -10,6 +10,8 @@
 
 Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)** para a aplicação de **Gerenciamento de Tickets**. Este microsserviço é responsável por registrar os eventos disponíveis e realizar a venda de ingressos para os usuários. Toda a solução foi implementada utilizando **Java Spring Boot**, garantindo padronização, escalabilidade e aderência às boas práticas de desenvolvimento backend.
 
+  - [Modelo]([https://github.com/luccas00/WEB1_MVC/edit/main/README.md])
+
 ---
 
 ## 🚀 Tecnologias
@@ -25,6 +27,8 @@ Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)**
 
 ## 📁 Estrutura
 
+- **Ticket/sales/src/main/java** – Código-fonte da aplicação
+- **Ticket/users/src/main/java** – Código-fonte da aplicação
 - **/src/main/java** – Código-fonte da aplicação
 - **/src/main/resources** – Arquivos de configuração e propriedades
 - **/docs** – Documentação técnica complementar
@@ -33,10 +37,9 @@ Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)**
 
 ## ✅ Funcionalidades Principais
 
-- Registro de eventos e sessões.
+- Registro de eventos.
 - Venda de ingressos para usuários.
 - Controle de fluxo de tickets.
-- Persistência e versionamento de dados.
 
 ---
 
