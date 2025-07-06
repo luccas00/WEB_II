@@ -26,11 +26,13 @@ public class UserSuperRecordDTO {
     private String name;
     private String email;
     private String password;
-    private String city;
     private EnumUserType userType;
     private EnumUserStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String cpf;
+    private String phone;
+    private LocalDateTime dateOfBirth;
     private List<SuperCreditCardRecordDTO> creditCards;
     private List<AddressRecordDTO> addresses;
 

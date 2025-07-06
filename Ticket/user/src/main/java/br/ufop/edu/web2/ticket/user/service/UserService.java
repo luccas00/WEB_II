@@ -6,15 +6,19 @@ import br.ufop.edu.web2.ticket.user.domain.UserDomain;
 import br.ufop.edu.web2.ticket.user.domain.usecase.CreateUserUseCase;
 import br.ufop.edu.web2.ticket.user.domain.usecase.UpdateUserPasswordUseCase;
 import br.ufop.edu.web2.ticket.user.dtos.*;
-import br.ufop.edu.web2.ticket.user.models.CreditCardNetworkModel;
+import br.ufop.edu.web2.ticket.user.models.AddressModel;
 import br.ufop.edu.web2.ticket.user.models.UserModel;
+import br.ufop.edu.web2.ticket.user.repositories.IAddressRepository;
 import br.ufop.edu.web2.ticket.user.repositories.ICreditCardNetworkRepository;
 import br.ufop.edu.web2.ticket.user.repositories.IUserRepository;
 import br.ufop.edu.web2.ticket.user.util.Password;
+import br.ufop.edu.web2.ticket.user.util.ViaCEP;
+import br.ufop.edu.web2.ticket.user.util.ViaCepResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,6 +29,7 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final IUserRepository userRepository;
+    private final IAddressRepository addressRepository;
     private final ICreditCardNetworkRepository creditCardNetworkRepository;
 
 
@@ -64,7 +69,41 @@ public class UserService {
 //
 //        userModel.setCreditCardNetworkModel(networkModel);
 
-        return UserConverter.toUserRecordDTO(userRepository.save(userModel));
+        UserRecordDTO userRecordDTO = UserConverter.toUserRecordDTO(userRepository.save(userModel));
+
+        AddressModel model = new AddressModel();
+        model.setUser(userModel);
+        model.setZipCode(createUser.getCep());
+
+
+        String response = ViaCEP.buscarEndereco(createUser.getCep());
+
+        // Parse da resposta JSON
+        ObjectMapper mapper = new ObjectMapper();
+
+        ViaCepResponse endereco = null;
+
+        try {
+            endereco = mapper.readValue(response, ViaCepResponse.class);
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Erro ao processar resposta do ViaCEP", e);
+        }
+
+        model.setUser(userModel);
+        model.setZipCode(endereco.getCep());
+        model.setStreet(endereco.getLogradouro());
+        model.setComplement(endereco.getComplemento());
+        model.setNeighborhood(endereco.getBairro());
+        model.setCity(endereco.getLocalidade());
+        model.setState(endereco.getEstado());
+        model.setUf(endereco.getUf());
+        model.setRegion(endereco.getRegiao());
+        model.setDdd(endereco.getDdd());
+
+        addressRepository.save(model);
+
+        return userRecordDTO;
 
     }
 
@@ -102,7 +141,7 @@ public class UserService {
 
     }
 
-    public UserRecordDTO updateUser(UpdateUserDTO updateUserDTO) {
+    public UserRecordDTO updateUserName(UpdateUserDTO updateUserDTO) {
 
         // Converter para uma entidade do domínio
         UserDomain userDomain = UserConverter.toUserDomain(updateUserDTO);
@@ -120,16 +159,31 @@ public class UserService {
 
         UserModel existingUserModel = optionalUserModel.get();
 
-//        existingUserModel.setCreditCardNumber(updateUserDTO.getCreditCardNumber());
-//
-//        CreditCardNetworkModel networkModel = creditCardNetworkRepository
-//                .findById(updateUserDTO.getCreditCardNetworkId())
-//                .orElseThrow(() -> new RuntimeException("Credit Card Network não encontrado"));
-
-//        existingUserModel.setCreditCardNetworkModel(networkModel);
-
         if (updateUserDTO.getName() != null) {
             existingUserModel.setName(updateUserDTO.getName());
+        }
+
+        UserModel savedUserModel = userRepository.save(existingUserModel);
+
+        return UserConverter.toUserRecordDTO(savedUserModel);
+
+    }
+
+    public UserRecordDTO updateUserPhone(UpdateUserPhoneDTO dto) {
+
+        // Converter para uma entidade do domínio
+        UserDomain userDomain = UserConverter.toUserDomain(dto);
+
+        Optional<UserModel> optionalUserModel = userRepository.findById(userDomain.getId());
+
+        if (optionalUserModel.isEmpty()) {
+            return null;
+        }
+
+        UserModel existingUserModel = optionalUserModel.get();
+
+        if (dto.getPhone() != null) {
+            existingUserModel.setPhone(dto.getPhone());
         }
 
         UserModel savedUserModel = userRepository.save(existingUserModel);
@@ -176,32 +230,5 @@ public class UserService {
 
     }
 
-
-    public UserRecordDTO updateCreditCard(UpdateUserCreditCardDTO updateUserCreditCardDTO) {
-
-        Optional<UserModel> optional = userRepository
-                .findById(updateUserCreditCardDTO.id());
-
-        if (optional.isEmpty()) {
-            return null;
-        }
-
-        Optional<CreditCardNetworkModel> optionalCCN = creditCardNetworkRepository.findById(updateUserCreditCardDTO.creditCardNetworkId());
-
-        if (optionalCCN.isEmpty()) {
-            return null;
-        }
-
-        UserModel userModel = optional.get();
-        CreditCardNetworkModel creditCardNetworkModel = optionalCCN.get();
-
-//        userModel.setCreditCardNumber(updateUserCreditCardDTO.creditCardNumber());
-//        userModel.setCreditCardNetworkModel(creditCardNetworkModel);
-
-        return UserConverter.toUserRecordDTO(
-                userRepository.save(userModel)
-        );
-
-    }
 
 }

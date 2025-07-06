@@ -31,6 +31,12 @@ public class UserDomain {
     private String email;
     private String password;
 
+    private String cpf;
+
+    private String phone;
+
+    private LocalDateTime dateOfBirth;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

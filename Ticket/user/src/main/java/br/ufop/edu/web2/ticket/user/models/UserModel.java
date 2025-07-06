@@ -29,6 +29,12 @@ public class UserModel {
 
     private String name;
 
+    private String cpf;
+
+    private String phone;
+
+    private LocalDateTime dateOfBirth;
+
     private String email;
     private String password;
 

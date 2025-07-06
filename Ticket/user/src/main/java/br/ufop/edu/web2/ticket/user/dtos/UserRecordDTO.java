@@ -7,6 +7,7 @@ import br.ufop.edu.web2.ticket.user.enums.EnumUserType;
 import br.ufop.edu.web2.ticket.user.models.AddressModel;
 import lombok.Builder;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -18,6 +19,9 @@ public record UserRecordDTO(
         String email,
         EnumUserStatus status,
         EnumUserType userType,
+        String cpf,
+        String phone,
+        LocalDateTime dateOfBirth,
         List<CreditCardRecordDTO> creditCards,
         List<AddressRecordDTO> addresses
 ) {

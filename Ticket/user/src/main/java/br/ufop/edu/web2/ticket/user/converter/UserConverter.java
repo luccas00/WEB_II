@@ -2,10 +2,7 @@ package br.ufop.edu.web2.ticket.user.converter;
 
 import br.ufop.edu.web2.ticket.user.domain.CreditCardNetworkDomain.*;
 import br.ufop.edu.web2.ticket.user.domain.UserDomain;
-import br.ufop.edu.web2.ticket.user.dtos.CreateUserDTO;
-import br.ufop.edu.web2.ticket.user.dtos.UpdateUserDTO;
-import br.ufop.edu.web2.ticket.user.dtos.UserRecordDTO;
-import br.ufop.edu.web2.ticket.user.dtos.UserSuperRecordDTO;
+import br.ufop.edu.web2.ticket.user.dtos.*;
 import br.ufop.edu.web2.ticket.user.models.UserModel;
 import br.ufop.edu.web2.ticket.user.repositories.*;
 import br.ufop.edu.web2.ticket.user.service.CreditCardNetworkService;
@@ -25,6 +22,9 @@ public class UserConverter {
                 .email(user.getEmail())
                 .status(user.getStatus())
                 .userType(user.getUserType())
+                .phone(user.getPhone())
+                .dateOfBirth(user.getDateOfBirth())
+                .cpf(user.getCpf())
                 .creditCards(
                     user.getCreditCards() != null
                         ? user.getCreditCards().stream()
@@ -60,6 +60,9 @@ public class UserConverter {
                 .key(userDomain.getKey())
                 .email(userDomain.getEmail())
                 .password(userDomain.getPassword())
+                .phone(userDomain.getPhone())
+                .cpf(userDomain.getCpf())
+                .dateOfBirth(userDomain.getDateOfBirth())
                 .build();
     }
 
@@ -74,6 +77,9 @@ public class UserConverter {
                 .key(UUID.randomUUID())
                 .email(createUserDTO.getEmail())
                 .password(createUserDTO.getPassword())
+                .cpf(createUserDTO.getCpf())
+                .phone(createUserDTO.getPhone())
+                .dateOfBirth(createUserDTO.getDateOfBirth())
                 .build();
 
     }
@@ -83,6 +89,13 @@ public class UserConverter {
                 .id(updateUserDTO.getId())
                 .name(updateUserDTO.getName())
                 .email(updateUserDTO.getEmail())
+                .build();
+    }
+
+    public static UserDomain toUserDomain(UpdateUserPhoneDTO updateUserDTO) {
+        return UserDomain.builder()
+                .id(updateUserDTO.getId())
+                .phone(updateUserDTO.getPhone())
                 .build();
     }
 
@@ -101,6 +114,9 @@ public class UserConverter {
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .phone(user.getPhone())
+                .dateOfBirth(user.getDateOfBirth())
+                .cpf(user.getCpf())
                 .userType(user.getUserType())
                 .status(user.getStatus())
                 .createdAt(user.getCreatedAt())

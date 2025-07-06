@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -34,6 +35,13 @@ public class EventsController {
         return ResponseEntity.ok(list);
 
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EventsRecordDTO> getEventById(@PathVariable UUID id) {
+        EventsRecordDTO dto = eventsService.getEventById(id);
+        return ResponseEntity.ok(dto);
+    }
+
 
     @PostMapping
     public ResponseEntity<EventsRecordDTO> createEvents(@RequestBody CreateEventsDTO dto) {

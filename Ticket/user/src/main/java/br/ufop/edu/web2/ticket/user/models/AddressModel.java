@@ -23,6 +23,7 @@ public class AddressModel {
     @JoinColumn(name = "user_id")
     private UserModel user;
 
+    private String zipCode;
     private String street;
     private String complement;
     private String neighborhood;

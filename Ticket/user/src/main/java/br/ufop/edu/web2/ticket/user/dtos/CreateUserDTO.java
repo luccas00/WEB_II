@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -19,5 +20,9 @@ public class CreateUserDTO {
     private EnumUserType userType;
     private String email;
     private String password;
+    private String cpf;
+    private String cep;
+    private String phone;
+    private LocalDateTime dateOfBirth;
 
 }

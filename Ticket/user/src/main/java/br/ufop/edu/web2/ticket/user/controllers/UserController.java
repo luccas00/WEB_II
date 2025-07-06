@@ -2,7 +2,6 @@ package br.ufop.edu.web2.ticket.user.controllers;
 
 import br.ufop.edu.web2.ticket.user.converter.UserConverter;
 import br.ufop.edu.web2.ticket.user.dtos.*;
-import br.ufop.edu.web2.ticket.user.models.UserModel;
 import br.ufop.edu.web2.ticket.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -83,10 +82,10 @@ public class UserController {
 
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<UserRecordDTO> updateUser(@RequestBody UpdateUserDTO updateUserDTO) {
+    @PutMapping("/update/name")
+    public ResponseEntity<UserRecordDTO> updateUserName(@RequestBody UpdateUserDTO updateUserDTO) {
 
-        UserRecordDTO simpleUserRecordDTO = userService.updateUser(updateUserDTO);
+        UserRecordDTO simpleUserRecordDTO = userService.updateUserName(updateUserDTO);
 
         if (simpleUserRecordDTO == null) {
             return ResponseEntity.notFound().build();
@@ -96,7 +95,20 @@ public class UserController {
 
     }
 
-    @PutMapping("/password")
+    @PutMapping("/update/phone")
+    public ResponseEntity<UserRecordDTO> updateUser(@RequestBody UpdateUserPhoneDTO updateUserPhoneDTO) {
+
+        UserRecordDTO simpleUserRecordDTO = userService.updateUserPhone(updateUserPhoneDTO);
+
+        if (simpleUserRecordDTO == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(simpleUserRecordDTO);
+
+    }
+
+    @PutMapping("/update/password")
     public ResponseEntity<UserRecordDTO> updateUserPassword(@RequestBody UpdateUserPasswordDTO updateUserPasswordDTO) {
 
         UserRecordDTO simpleUserRecordDTO = userService.updateUserPassword(updateUserPasswordDTO);
