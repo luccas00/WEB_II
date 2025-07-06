@@ -25,16 +25,6 @@ Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)**
 
 ---
 
-## 📁 Estrutura
-
-- **Ticket/sales/src/main/java** – Código-fonte da aplicação
-- **Ticket/users/src/main/java** – Código-fonte da aplicação
-- **/src/main/java** – Código-fonte da aplicação
-- **/src/main/resources** – Arquivos de configuração e propriedades
-- **/docs** – Documentação técnica complementar
-
----
-
 ## ✅ Funcionalidades Principais
 
 - Registro de eventos.
