@@ -1,4 +1,4 @@
-# CSI607-25.1 - Sistemas Web II
+# CSI607 - 25.1 - Sistemas Web II
 
 ## Discente
 
