@@ -1,0 +1,242 @@
+### ROOT – Health Check
+GET http://localhost:3000
+
+### Encrypt Password
+POST http://localhost:3000/encrypt
+Content-Type: application/json
+
+{
+  "senha": "senhaSegura123",
+  "key": "21ab0c46-4385-47f0-b588-50e7d15e4cb6"
+}
+
+### Decrypt Password
+POST http://localhost:3000/decript
+Content-Type: application/json
+
+{
+  "senha": "F5ap6eYCBA1gLP6D/GpDOA==",
+  "key": "21ab0c46-4385-47f0-b588-50e7d15e4cb6"
+}
+
+### USERS – Get All (UserRecordDTO)
+GET http://localhost:3000/users
+
+### USERS – Get All Full Model
+GET http://localhost:3000/users/super
+
+### USERS – Status (Message)
+GET http://localhost:3000/users/status
+
+### USERS – Create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Luccas Vinicius",
+  "userType": "ADMINISTRATOR",
+  "status": "ACTIVE",
+  "email": "luccas@example.com",
+  "password": "senhaSegura123",
+  "cpf": "111.111.111-00",
+  "cep": "35931008",
+  "phone": "(31) 99988-9988",
+  "dateOfBirth": "1998-01-01T12:00:00"
+}
+
+### USERS – Get By Id (Path Param)
+GET http://localhost:3000/users/7e1a0e6d-3c4e-4c77-9c4d-3b4f5e9e7a1b
+
+### USERS – Get By Id (Body)
+POST http://localhost:3000/users/getById
+Content-Type: application/json
+
+{
+  "id": "7e1a0e6d-3c4e-4c77-9c4d-3b4f5e9e7a1b"
+}
+
+### USERS – Contains Name
+GET http://localhost:3000/users/containsName/c
+
+### USERS – Get By Name
+GET http://localhost:3000/users/getByName/luc
+
+### USERS – Update Name
+PUT http://localhost:3000/users/update/name
+Content-Type: application/json
+
+{
+  "id": "b012e95c-7081-4dfc-ad85-8b3b101e8e69",
+  "name": "Luccas V P A S Carneiro"
+}
+
+### USERS – Update Phone
+PUT http://localhost:3000/users/update/phone
+Content-Type: application/json
+
+{
+  "id": "b012e95c-7081-4dfc-ad85-8b3b101e8e69",
+  "phone": "(11) 9 1111-2222"
+}
+
+### USERS – Update Password
+PUT http://localhost:3000/users/update/password
+Content-Type: application/json
+
+{
+  "id": "588ed3bb-9a32-45ba-bdf0-2c6ccc70509b",
+  "email": "luccas@example.com",
+  "oldPassword": "senhaSegura123",
+  "newPassword": "novaSenha123"
+}
+
+### USERS – Remove
+DELETE http://localhost:3000/users/remove
+Content-Type: application/json
+
+{
+  "id": "02c95281-bfa8-4859-93dc-1508ed511901"
+}
+
+### CREDIT CARD NETWORK – Get All
+GET http://localhost:3000/ccn
+
+### CREDIT CARD NETWORK – Create
+POST http://localhost:3000/ccn
+Content-Type: application/json
+
+{
+  "name": "Visa"
+}
+
+### CREDIT CARD NETWORK – Remove
+DELETE http://localhost:3000/ccn/remove
+Content-Type: application/json
+
+{
+  "id": "5b246656-271f-4851-97f2-215c2685281c"
+}
+
+### CREDIT CARD – Create
+POST http://localhost:3000/cc
+Content-Type: application/json
+
+{
+  "userId": "b012e95c-7081-4dfc-ad85-8b3b101e8e69",
+  "creditCardNetworkId": "5b246656-271f-4851-97f2-215c2685281c",
+  "creditCardNumber": "1",
+  "owner": "Luccas Carneiro",
+  "cvc": 0,
+  "expiryDate": "2030-11-20"
+}
+
+### CREDIT CARD – Remove
+DELETE http://localhost:3000/cc/remove
+Content-Type: application/json
+
+{
+  "id": "058e58ed-2ad5-4ad7-bf47-dbacfeee5d90"
+}
+
+### ADDRESS – Get All
+GET http://localhost:3000/address
+
+### ADDRESS – Create
+POST http://localhost:3000/address
+Content-Type: application/json
+
+{
+  "user": "0b1fd55c-0a9d-4d05-b294-a0f12c0f1bbd",
+  "zipCode": "35931008",
+  "street": "Rua Trinta e Seis",
+  "complement": "",
+  "neighborhood": "Loanda",
+  "city": "João Monlevade",
+  "state": "Minas Gerais",
+  "region": "Sudeste",
+  "uf": "MG",
+  "ddd": "31"
+}
+
+### ADDRESS – Remove
+DELETE http://localhost:3000/address/remove
+Content-Type: application/json
+
+{
+  "id": "19db67e4-6f24-4511-8c54-9f7d6e34a71a"
+}
+
+### SALES – Create Sale
+POST http://localhost:4000/sales
+Content-Type: application/json
+
+{
+  "user_id": "ffd6a29f-a3d0-4b94-94ac-1045c70478d5",
+  "event_id": "abd81573-7d0d-4a18-bfd8-fa028bf703cf",
+  "purchaseDate": "2025-08-20T00:00:00"
+}
+
+### SALES – Get All Sales
+GET http://localhost:4000/sales
+
+### SALES – Remove Sale
+DELETE http://localhost:4000/sales/remove
+Content-Type: application/json
+
+{
+  "id": "ffd6a29f-a3d0-4b94-94ac-1045c70478d5"
+}
+
+### SALES – Update Sale Status
+PUT http://localhost:4000/sales/update/status
+Content-Type: application/json
+
+{
+  "id": "6f5dc42b-5144-484b-ab36-7dcef0c49345",
+  "purchaseStatus": "ESTORNADO"
+}
+
+### EVENTS – Create Event
+POST http://localhost:4000/events
+Content-Type: application/json
+
+{
+  "name": "Cinema",
+  "description": "Formula 1 o Filme Cinema",
+  "type": "CINEMA",
+  "date": "2025-08-20T00:00:00",
+  "startSales": "2025-08-20T00:00:00",
+  "endSales": "2025-08-20T00:00:00",
+  "price": 22.55
+}
+
+### EVENTS – Get All Events
+GET http://localhost:4000/events
+
+### EVENTS – Update Event Price
+PUT http://localhost:4000/events/update/price
+Content-Type: application/json
+
+{
+  "id": "abd81573-7d0d-4a18-bfd8-fa028bf703cf",
+  "price": 899.95
+}
+
+### EVENTS – Update Event Date
+PUT http://localhost:4000/events/update/date
+Content-Type: application/json
+
+{
+  "id": "abd81573-7d0d-4a18-bfd8-fa028bf703cf",
+  "date": "2030-08-20T00:00:00",
+  "startSales": "2026-08-20T00:00:00",
+  "endSales": "2026-08-20T00:00:00"
+}
+
+### EVENTS – Remove Event
+DELETE http://localhost:4000/events/remove
+Content-Type: application/json
+
+{
+  "id": "778ec351-87b4-4f30-be95-afafe2dff98d"
+}

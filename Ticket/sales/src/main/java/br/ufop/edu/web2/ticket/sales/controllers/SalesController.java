@@ -50,7 +50,7 @@ public class SalesController {
 
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/status")
     public ResponseEntity<SalesRecordDTO> updateSales(@RequestBody UpdateSalesStatusDTO dto) {
 
         SalesRecordDTO salesRecordDTO = salesService.updateSalesStatus(dto);
