@@ -1,10 +1,13 @@
 package br.ufop.edu.web2.ticket.user.dtos;
 
+import br.ufop.edu.web2.ticket.user.dtos.address.AddressRecordDTO;
 import br.ufop.edu.web2.ticket.user.dtos.creditcard.CreditCardRecordDTO;
 import br.ufop.edu.web2.ticket.user.enums.EnumUserStatus;
 import br.ufop.edu.web2.ticket.user.enums.EnumUserType;
+import br.ufop.edu.web2.ticket.user.models.AddressModel;
 import lombok.Builder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,11 +16,10 @@ public record UserRecordDTO(
         UUID id,
         String name,
         String email,
-        String city,
         EnumUserStatus status,
         EnumUserType userType,
-        List<CreditCardRecordDTO> creditCards
-
+        List<CreditCardRecordDTO> creditCards,
+        List<AddressRecordDTO> addresses
 ) {
 
 }

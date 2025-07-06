@@ -1,14 +1,14 @@
 package br.ufop.edu.web2.ticket.sales.controllers;
 
-import br.ufop.edu.web2.ticket.sales.dtos.events.CreateEventsDTO;
-import br.ufop.edu.web2.ticket.sales.dtos.events.DeleteEventsDTO;
-import br.ufop.edu.web2.ticket.sales.dtos.events.EventsRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.events.*;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.services.EventsService;
 import br.ufop.edu.web2.ticket.sales.services.SalesService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,4 +52,29 @@ public class EventsController {
 
     }
 
+    @PutMapping("/update/price")
+    public ResponseEntity<EventsRecordDTO> updateEventPrice(@RequestBody UpdateEventPriceDTO dto) {
+
+        EventsRecordDTO eventsRecordDTO = eventsService.updateEventPrice(dto);
+
+        if (eventsRecordDTO == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.ok(eventsRecordDTO);
+
+    }
+
+    @PutMapping("/update/date")
+    public ResponseEntity<EventsRecordDTO> updateEventDate(@RequestBody UpdateEventDateDTO dto) {
+
+        EventsRecordDTO eventsRecordDTO = eventsService.updateEventDate(dto);
+
+        if (eventsRecordDTO == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.ok(eventsRecordDTO);
+
+    }
 }

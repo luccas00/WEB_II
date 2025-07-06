@@ -19,6 +19,5 @@ public class CreateUserDTO {
     private EnumUserType userType;
     private String email;
     private String password;
-    private String city;
 
 }

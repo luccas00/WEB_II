@@ -10,7 +10,8 @@ public enum EnumEventsTypes {
     PALESTRA(1, "Palestra"),
     SHOW(2, "Show"),
     TEATRO(3, "Teatro"),
-    CINEMA(4, "Cinema");
+    CINEMA(4, "Cinema"),
+    CURSO(5, "Curso");
 
     // id - descrição
     private Integer id;

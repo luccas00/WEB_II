@@ -5,6 +5,7 @@ import br.ufop.edu.web2.ticket.sales.domain.SalesDomain;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.enums.EnumSalesStatus;
 import br.ufop.edu.web2.ticket.sales.models.EventsModel;
 import br.ufop.edu.web2.ticket.sales.models.SalesModel;
@@ -67,6 +68,28 @@ public class SalesService {
         }
 
         salesRepository.delete(optionalModel.get());
+
+    }
+
+    public SalesRecordDTO updateSalesStatus(UpdateSalesStatusDTO dto) {
+
+        SalesDomain domain = SalesConverter.toSalesDomain(dto);
+
+        Optional<SalesModel> optionalModel = salesRepository.findById(dto.getId());
+
+        if (optionalModel.isEmpty()) {
+            throw new RuntimeException("Sales not found.");
+        }
+
+        SalesModel salesModel = optionalModel.get();
+
+        if (dto.getPurchaseStatus() != null) {
+            salesModel.setPurchaseStatus(dto.getPurchaseStatus());
+        }
+
+        SalesModel saved = salesRepository.save(salesModel);
+
+        return SalesConverter.toSalesRecordDTO(saved);
 
     }
 

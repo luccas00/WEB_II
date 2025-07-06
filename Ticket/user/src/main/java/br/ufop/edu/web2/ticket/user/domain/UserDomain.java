@@ -21,17 +21,15 @@ public class UserDomain {
     private UUID key;
     private String name;
 
-    // ...
-
     private List<CreditCardDomain> creditCards = new ArrayList<>();
+
+    private List<AddressDomain> addresses = new ArrayList<>();
 
     private EnumUserType userType;
     private EnumUserStatus status;
 
     private String email;
     private String password;
-
-    private String city;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

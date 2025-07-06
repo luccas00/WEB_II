@@ -10,7 +10,5 @@ public interface IUserRepository extends JpaRepository<UserModel, UUID> {
 
     List<UserModel> findByName(String name);
     List<UserModel> findByEmail(String email);
-    List<UserModel> findByCity(String city);
-    List<UserModel> findByStatus(int status);
     List<UserModel> findAllByNameContainsIgnoreCase(String name);
 }

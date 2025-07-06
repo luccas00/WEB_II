@@ -1,6 +1,7 @@
 package br.ufop.edu.web2.ticket.user.models;
 
 
+import br.ufop.edu.web2.ticket.user.domain.AddressDomain;
 import br.ufop.edu.web2.ticket.user.enums.EnumUserStatus;
 import br.ufop.edu.web2.ticket.user.enums.EnumUserType;
 import jakarta.persistence.*;
@@ -31,11 +32,11 @@ public class UserModel {
     private String email;
     private String password;
 
-    @Column(nullable = true)
-    private String city;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CreditCardModel> creditCards = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AddressModel> addresses = new ArrayList<>();
 
     private EnumUserType userType;
     private EnumUserStatus status;

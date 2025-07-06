@@ -18,6 +18,5 @@ public class UpdateUserDTO {
     private UUID id;
     private String name;
     private String email;
-    private String city;
 
 }

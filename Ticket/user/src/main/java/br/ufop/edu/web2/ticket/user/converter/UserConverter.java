@@ -23,15 +23,21 @@ public class UserConverter {
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .city(user.getCity())
                 .status(user.getStatus())
                 .userType(user.getUserType())
                 .creditCards(
-                        user.getCreditCards() != null
-                                ? user.getCreditCards().stream()
-                                .map(CreditCardConverter::toCreditCardRecordDTO)
-                                .toList()
-                                : new ArrayList<>()
+                    user.getCreditCards() != null
+                        ? user.getCreditCards().stream()
+                        .map(CreditCardConverter::toCreditCardRecordDTO)
+                        .toList()
+                        : new ArrayList<>()
+                )
+                .addresses(
+                    user.getAddresses() != null
+                        ? user.getAddresses().stream()
+                        .map(AddressConverter::toAddressRecordDTO)
+                        .toList()
+                        : new ArrayList<>()
                 )
                 .build();
     }
@@ -45,11 +51,15 @@ public class UserConverter {
                         .map(CreditCardConverter::toCreditCardModel)
                         .toList()
                         : new ArrayList<>())
+                .addresses(userDomain.getAddresses() != null
+                        ? userDomain.getAddresses().stream()
+                        .map(AddressConverter::toAddresModel)
+                        .toList()
+                        : new ArrayList<>())
                 .status(userDomain.getStatus())
                 .key(userDomain.getKey())
                 .email(userDomain.getEmail())
                 .password(userDomain.getPassword())
-                .city(userDomain.getCity())
                 .build();
     }
 
@@ -64,7 +74,6 @@ public class UserConverter {
                 .key(UUID.randomUUID())
                 .email(createUserDTO.getEmail())
                 .password(createUserDTO.getPassword())
-                .city(createUserDTO.getCity())
                 .build();
 
     }
@@ -74,7 +83,6 @@ public class UserConverter {
                 .id(updateUserDTO.getId())
                 .name(updateUserDTO.getName())
                 .email(updateUserDTO.getEmail())
-                .city(updateUserDTO.getCity())
                 .build();
     }
 
@@ -93,13 +101,15 @@ public class UserConverter {
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .city(user.getCity())
                 .userType(user.getUserType())
                 .status(user.getStatus())
                 .createdAt(user.getCreatedAt())
                 .updatedAt(user.getUpdatedAt())
                 .creditCards(user.getCreditCards().stream()
                         .map(CreditCardConverter::toSuperCreditCardRecordDTO)
+                        .toList())
+                .addresses(user.getAddresses().stream()
+                        .map(AddressConverter::toAddressRecordDTO)
                         .toList())
                 .build();
     }

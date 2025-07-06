@@ -40,20 +40,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-
-    public List<UserRecordDTO> getAllUsers1() {
-
-        List<UserModel> result = userRepository.findAll();
-        List<UserRecordDTO> dtos = new ArrayList<UserRecordDTO>();
-
-        for (UserModel user : result) {
-            dtos.add(UserConverter.toUserRecordDTO(user));
-        }
-
-        return dtos;
-
-    }
-
     public UserRecordDTO createUser(CreateUserDTO createUser) {
 
         UserDomain userDomain = UserConverter.toUserDomain(createUser);
@@ -145,11 +131,6 @@ public class UserService {
         if (updateUserDTO.getName() != null) {
             existingUserModel.setName(updateUserDTO.getName());
         }
-
-        if (updateUserDTO.getCity() != null) {
-            existingUserModel.setCity(updateUserDTO.getCity());
-        }
-
 
         UserModel savedUserModel = userRepository.save(existingUserModel);
 

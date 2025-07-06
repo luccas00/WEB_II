@@ -4,17 +4,16 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_credit_card")
+@Table(name = "tb_address")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreditCardModel {
+public class AddressModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,14 +23,14 @@ public class CreditCardModel {
     @JoinColumn(name = "user_id")
     private UserModel user;
 
-    @ManyToOne
-    @JoinColumn(name = "credit_card_network_id")
-    private CreditCardNetworkModel creditCardNetworkModel;
-
-    private String creditCardNumber;
-    private int cvc;
-    private String owner;
-    private Date expiryDate;
+    private String street;
+    private String complement;
+    private String neighborhood;
+    private String city;
+    private String state;
+    private String region;
+    private String uf;
+    private String ddd;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -3,6 +3,7 @@ package br.ufop.edu.web2.ticket.sales.converter;
 import br.ufop.edu.web2.ticket.sales.domain.SalesDomain;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.models.SalesModel;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,16 @@ public class SalesConverter {
                 .build();
 
     }
+
+    public static SalesDomain toSalesDomain(UpdateSalesStatusDTO dto) {
+
+        return SalesDomain.builder()
+                .id(dto.getId())
+                .purchaseStatus(dto.getPurchaseStatus())
+                .build();
+
+    }
+
+
 
 }

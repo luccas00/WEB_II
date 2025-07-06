@@ -5,6 +5,7 @@ import br.ufop.edu.web2.ticket.user.models.UserModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -22,5 +23,9 @@ public class CreditCardDomain {
     private int cvc;
     private String owner;
     private Date expiryDate;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
 
 }

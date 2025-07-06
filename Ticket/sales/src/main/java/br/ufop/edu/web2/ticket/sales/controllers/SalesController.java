@@ -3,8 +3,10 @@ package br.ufop.edu.web2.ticket.sales.controllers;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.services.SalesService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +47,19 @@ public class SalesController {
 
         salesService.delete(dto);
         return ResponseEntity.ok("Sale has been deleted.");
+
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<SalesRecordDTO> updateSales(@RequestBody UpdateSalesStatusDTO dto) {
+
+        SalesRecordDTO salesRecordDTO = salesService.updateSalesStatus(dto);
+
+        if (salesRecordDTO == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.ok(salesRecordDTO);
 
     }
 
