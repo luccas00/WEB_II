@@ -1,46 +1,52 @@
-# CSI607 - 25.1 - Sistemas Web II
+# CSI607 – 25.1 – Sistemas Web II
 
-## Discente
+## 👤 Discente
 
 **Luccas Vinicius P. A. Santos Carneiro**
 
 ---
 
-## 📄 Resumo
+## 📄 Descrição Geral
 
-Este projeto consiste no desenvolvimento do **Microsserviço de Vendas (Sales)** para a aplicação de **Gerenciamento de Tickets**. Este microsserviço é responsável por registrar os eventos disponíveis e realizar a venda de ingressos para os usuários. Toda a solução foi implementada utilizando **Java Spring Boot**, garantindo padronização, escalabilidade e aderência às boas práticas de desenvolvimento backend.
+Este repositório contém o **Microsserviço de Vendas (Sales)**, parte integrante da aplicação de **Gerenciamento de Tickets**.  
+O objetivo é gerenciar o **registro de eventos**, o **controle de disponibilidade de ingressos** e a **execução de vendas** para os usuários finais.  
 
-  - [Modelo](https://github.com/fboliveira/Sistemas-Web-Java-Spring/blob/main/Assignments/01-practical.md)
-    
+O projeto foi desenvolvido em **Java 17** com **Spring Boot**, seguindo boas práticas de **arquitetura de microsserviços**, **padrões RESTful** e **persistência relacional** via **JPA/Hibernate**, garantindo **escalabilidade**, **manutenção facilitada** e **padronização corporativa**.
+
+> 📌 [Modelo de Atividade](https://github.com/fboliveira/Sistemas-Web-Java-Spring/blob/main/Assignments/01-practical.md)
+
 ---
 
-## 🚀 Tecnologias
+## ⚙️ Tecnologias Utilizadas
 
 - **Java 17**
 - **Spring Boot**
 - **Maven**
-- **REST API**
-- **JPA / Hibernate**
-- **Banco de Dados Relacional**
+- **Spring Data JPA (Hibernate)**
+- **API REST**
+- **Banco de Dados Relacional (ex: PostgreSQL, MySQL)**
 
 ---
 
-## ✅ Funcionalidades Principais
+## ✅ Funcionalidades Implementadas
 
-- Registro de eventos.
-- Venda de ingressos para usuários.
-- Controle de fluxo de tickets.
-
----
-
-## 🚪 Portas
-
-- User Application: 3000
-- Sales Application: 4000
-- React Web App: 3001
+- Cadastro e gestão de eventos.
+- Disponibilização de ingressos para venda.
+- Fluxo de venda de tickets para usuários autenticados.
+- API RESTful com endpoints claros e versionados.
 
 ---
 
-## 👨‍💻 Disciplina
+## 🚪 Portas Padrão
 
-**CSI607-25.1 – Sistemas Web II**
+| Serviço              | Porta |
+|----------------------|-------|
+| User Application     | 3000  |
+| Sales Application    | 4000  |
+| React Frontend       | 3001  |
+
+---
+
+## 🎓 Disciplina
+
+**CSI607 – 25.1 – Sistemas Web II**
