@@ -8,7 +8,7 @@
 
 ## 📄 Descrição Geral
 
-Este repositório contém o **Microsserviço de Vendas (Sales)**, parte integrante da aplicação de **Gerenciamento de Tickets**.  
+Este repositório contém o **Microsserviço de Vendas (Sales)** e o **Microsserviço de Usuários (Users)**, parte integrante da aplicação de **Gerenciamento de Tickets**.  
 O objetivo é gerenciar o **registro de eventos**, o **controle de disponibilidade de ingressos** e a **execução de vendas** para os usuários finais.  
 
 O projeto foi desenvolvido em **Java 17** com **Spring Boot**, seguindo boas práticas de **arquitetura de microsserviços**, **padrões RESTful** e **persistência relacional** via **JPA/Hibernate**, garantindo **escalabilidade**, **manutenção facilitada** e **padronização corporativa**.
