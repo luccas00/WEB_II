@@ -9,7 +9,12 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 public class NameserverApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(NameserverApplication.class, args);
+
+		System.out.println("Hello There...");
+		System.out.println("Nameserver Application is running...");
+
 	}
 
 }
