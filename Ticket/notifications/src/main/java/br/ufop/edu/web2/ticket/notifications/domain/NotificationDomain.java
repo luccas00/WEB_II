@@ -1,14 +1,10 @@
 package br.ufop.edu.web2.ticket.notifications.domain;
 
 import br.ufop.edu.web2.ticket.notifications.enums.EnumNotificationType;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @Setter

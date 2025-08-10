@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/notifications")
 @AllArgsConstructor
@@ -26,6 +28,15 @@ public class NotificationController {
         NotificationDTO notificationDTO = notificationService.create(createNotificationDTO);
 
         return ResponseEntity.ok(notificationDTO);
+
+    }
+
+    @GetMapping
+    public ResponseEntity<List<NotificationDTO>> getAll() {
+
+        List<NotificationDTO> list = notificationService.getAllNotifications();
+
+        return ResponseEntity.ok(list);
 
     }
 

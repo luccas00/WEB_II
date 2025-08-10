@@ -9,6 +9,8 @@ import br.ufop.edu.web2.ticket.notifications.repositories.INotificationRepositor
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class NotificationService {
@@ -28,6 +30,22 @@ public class NotificationService {
         return NotificationConverter.toNotificationDTO(
                 notificationRepository.save(notificationModel)
         );
+
+    }
+
+    public List<NotificationDTO> getAllNotifications() {
+
+        List<NotificationModel> list = notificationRepository.findAll();
+
+        return list.stream().map(NotificationConverter::toNotificationDTO).toList();
+
+    }
+
+    public List<NotificationDTO> getTop10Notifications() {
+
+        List<NotificationModel> list = notificationRepository.findAll();
+
+        return list.stream().map(NotificationConverter::toNotificationDTO).toList().subList(0, 10);
 
     }
 
