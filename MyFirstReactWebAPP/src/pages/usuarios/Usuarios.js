@@ -11,7 +11,7 @@ export default function Usuarios() {
   }, []);
 
   const fetchUsuarios = () => {
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:8080/users')
       .then((res) => {
         if (!res.ok) throw new Error('Erro ao buscar usuários');
         return res.json();

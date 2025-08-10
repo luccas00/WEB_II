@@ -1,10 +1,12 @@
 package br.ufop.edu.web2.ticket.sales.controllers;
 
+import br.ufop.edu.web2.ticket.sales.dtos.external.UserDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.services.SalesService;
+import br.ufop.edu.web2.ticket.sales.services.clients.UserServiceClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import java.util.List;
 public class SalesController {
 
     private final SalesService salesService;
+    private final UserServiceClient userServiceClient;
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
@@ -61,6 +64,12 @@ public class SalesController {
 
         return ResponseEntity.ok(salesRecordDTO);
 
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        return ResponseEntity.ok(userServiceClient.getAllUsers()
+        );
     }
 
 
