@@ -1,6 +1,7 @@
 package br.ufop.edu.web2.ticket.sales.dtos.sales;
 
 import br.ufop.edu.web2.ticket.sales.dtos.events.EventsRecordDTO;
+import br.ufop.edu.web2.ticket.sales.dtos.external.UserDTO;
 import br.ufop.edu.web2.ticket.sales.enums.EnumSalesStatus;
 
 import java.time.LocalDateTime;

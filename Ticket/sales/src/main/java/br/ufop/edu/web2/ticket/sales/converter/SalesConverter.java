@@ -5,6 +5,7 @@ import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.UpdateSalesStatusDTO;
 import br.ufop.edu.web2.ticket.sales.models.SalesModel;
+import br.ufop.edu.web2.ticket.sales.converter.external.UserConverter;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

@@ -3,7 +3,9 @@ package br.ufop.edu.web2.ticket.sales.models;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.ufop.edu.web2.ticket.sales.dtos.external.UserDTO;
 import br.ufop.edu.web2.ticket.sales.enums.EnumSalesStatus;
+import br.ufop.edu.web2.ticket.user.models.UserModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

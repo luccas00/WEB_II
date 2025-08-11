@@ -1,58 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_BASE_URL } from '../Config';
 
-import { API_BASE_URL } from '../config';
+const STATUS_LABEL = {
+  EM_ABERTO: 'Em Aberto',
+  CONCLUIDA: 'Concluída',
+  CANCELADA: 'Cancelada',
+};
 
-export default function Usuarios() {
+export default function Vendas() {
   const [vendas, setVendas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchVendas();
-  }, []);
+  useEffect(() => { fetchVendas(); }, []);
 
   const fetchVendas = () => {
+    setLoading(true);
     fetch(`${API_BASE_URL}/sales`)
       .then((res) => {
         if (!res.ok) throw new Error('Erro ao buscar vendas');
         return res.json();
       })
       .then((data) => {
-        setVendas(data);
-        setLoading(false);
+        // Suporta tanto array puro quanto Page<SalesRecordDTO>
+        const list = Array.isArray(data) ? data : (data?.content ?? []);
+        setVendas(list);
       })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   };
 
   const handleDelete = (id) => {
     if (!window.confirm('Confirma exclusão desta venda?')) return;
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({ id });
-
-    const requestOptions = {
-      method: "DELETE",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-    };
-
-    fetch(`${API_BASE_URL}/sales/remove`, requestOptions)
-      .then((response) => {
-        if (!response.ok) throw new Error('Erro ao deletar venda');
-        return response.text();
+    fetch(`${API_BASE_URL}/sales/remove`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Erro ao deletar venda');
+        return res.text();
       })
-      .then(() => {
-        setVendas((prev) => prev.filter((user) => user.id !== id));
-      })
-      .catch((error) => alert(error.message));
+      .then(() => setVendas((prev) => prev.filter((v) => v.id !== id)))
+      .catch((err) => alert(err.message));
   };
+
+  const fmtDate = (d) => (d ? new Date(d).toLocaleString() : '-');
 
   if (loading) return <p>Carregando vendas...</p>;
   if (error) return <p>Erro: {error}</p>;
@@ -62,11 +57,7 @@ export default function Usuarios() {
       <h1 className="text-center mb-4">Vendas</h1>
 
       <div className="d-flex justify-content-end mb-3">
-        <Link
-          to="/vendas/new"
-          className="btn btn-success"
-          style={{ width: '5cm' }}
-        >
+        <Link to="/vendas/new" className="btn btn-success" style={{ width: '5cm' }}>
           Nova Venda
         </Link>
       </div>
@@ -74,7 +65,7 @@ export default function Usuarios() {
       <table className="table table-striped table-bordered">
         <thead className="table-dark">
           <tr>
-            <th>Proprietario</th>
+            <th>Proprietário (UUID)</th>
             <th>Evento</th>
             <th>Data da Compra</th>
             <th>Status da Compra</th>
@@ -84,16 +75,18 @@ export default function Usuarios() {
         <tbody>
           {vendas.map((venda) => (
             <tr key={venda.id}>
-              <td>{venda.userName}</td>
-              <td>{venda.eventName}</td>
-              <td>{venda.purchaseDate}</td>
-              <td>{venda.purchaseStatus}</td>
+              {/* Backend: SalesRecordDTO.user = UUID */}
+              <td>{venda.user ?? venda.user_id ?? '-'}</td>
+
+              {/* Backend: SalesRecordDTO.event = objeto; exibir nome */}
+              <td>{venda.event?.name ?? venda.eventName ?? '-'}</td>
+
+              <td>{fmtDate(venda.purchaseDate)}</td>
+              <td>{STATUS_LABEL[venda.purchaseStatus] ?? venda.purchaseStatus ?? '-'}</td>
+
               <td className="text-center">
                 <div className="d-flex justify-content-center gap-3">
-                  <Link
-                    to={`/vendas/${venda.id}`}
-                    className="btn btn-info btn-sm"
-                  >
+                  <Link to={`/vendas/${venda.id}`} className="btn btn-info btn-sm">
                     Detalhes
                   </Link>
                   <button

@@ -1,7 +1,9 @@
 package br.ufop.edu.web2.ticket.sales.services;
 
+import br.ufop.edu.web2.ticket.sales.converter.EventsConverter;
 import br.ufop.edu.web2.ticket.sales.converter.SalesConverter;
 import br.ufop.edu.web2.ticket.sales.domain.SalesDomain;
+import br.ufop.edu.web2.ticket.sales.dtos.events.EventsRecordDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.SalesRecordDTO;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -90,6 +93,18 @@ public class SalesService {
         SalesModel saved = salesRepository.save(salesModel);
 
         return SalesConverter.toSalesRecordDTO(saved);
+
+    }
+
+    public SalesRecordDTO getSaleById(UUID id) {
+
+        Optional<SalesModel> optional = salesRepository.findById(id);
+
+        if (optional.isEmpty()) {
+            throw new RuntimeException("Sale not found.");
+        }
+
+        return SalesConverter.toSalesRecordDTO(optional.stream().findFirst().get());
 
     }
 

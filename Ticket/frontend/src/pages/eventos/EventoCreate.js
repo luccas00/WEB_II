@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../Config';
+
+const EVENT_TYPES = [
+  { value: 'PALESTRA', label: 'Palestra' },
+  { value: 'SHOW', label: 'Show' },
+  { value: 'TEATRO', label: 'Teatro' },
+  { value: 'CINEMA', label: 'Cinema' },
+  { value: 'CURSO', label: 'Curso' },
+];
 
 export default function EventoCreate() {
   const navigate = useNavigate();
@@ -61,13 +69,18 @@ export default function EventoCreate() {
 
         <div className="mb-3">
           <label>Tipo</label>
-          <input
+          <select
             name="type"
             className="form-control"
             value={form.type}
             onChange={handleChange}
-            placeholder="Ex: CINEMA, SHOW"
-          />
+            required
+          >
+            <option value="" disabled>Selecione…</option>
+            {EVENT_TYPES.map(t => (
+              <option key={t.value} value={t.value}>{t.label}</option>
+            ))}
+          </select>
         </div>
 
         <div className="mb-3">

@@ -37,14 +37,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/users",
+									"raw": "http://localhost:3000/users/super",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"users"
+										"users",
+										"super"
 									]
 								}
 							},
@@ -56,7 +57,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/users/7e1a0e6d-3c4e-4c77-9c4d-3b4f5e9e7a1b",
+									"raw": "http://localhost:3000/users/{id}",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -64,7 +65,7 @@
 									"port": "3000",
 									"path": [
 										"users",
-										"7e1a0e6d-3c4e-4c77-9c4d-3b4f5e9e7a1b"
+										"{id}"
 									]
 								}
 							},
@@ -88,7 +89,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/users/containsName/c",
+									"raw": "http://localhost:3000/users/containsName/{name}",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -97,7 +98,7 @@
 									"path": [
 										"users",
 										"containsName",
-										"c"
+										"{name}"
 									]
 								}
 							},
@@ -121,7 +122,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/users/getByName/luc",
+									"raw": "http://localhost:3000/users/getByName/{name}",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -130,7 +131,7 @@
 									"path": [
 										"users",
 										"getByName",
-										"luc"
+										"{name}"
 									]
 								}
 							},

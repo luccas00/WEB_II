@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../Config';
 
 export default function UsuarioDetails() {
   const { id } = useParams();

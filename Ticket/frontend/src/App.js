@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Vendas from './pages/vendas/Vendas';
 
@@ -14,7 +14,10 @@ import EventoDetalhes from './pages/eventos/EventoDetalhes';
 
 import Usuarios from './pages/usuarios/Usuarios';
 import About from './pages/About';
-import Contact from './pages/Contact';
+
+import VendasCreate from './pages/vendas/VendasCreate';
+import VendasDetalhes from './pages/vendas/VendasDetails';
+import VendasAtualizarStatus from './pages/vendas/VendasUpdateStatus';
 
 function Home() {
   return (
@@ -74,8 +77,7 @@ function App() {
               <Link className="nav-link" to="/usuarios">Usuários</Link>
               <Link className="nav-link" to="/eventos">Eventos</Link>
               <Link className="nav-link" to="/vendas">Vendas</Link>
-              <Link className="nav-link" to="/about">About</Link>
-              <Link className="nav-link" to="/contact">Contact</Link>
+              <Link className="nav-link" to="/about">Sobre</Link>
             </div>
           </div>
         </div>
@@ -87,13 +89,13 @@ function App() {
         <Route path="/usuarios/:id" element={<UsuarioDetalhes />} />
         <Route path="/usuarios/new" element={<UsuarioCreate />} />
         <Route path="/vendas" element={<Vendas />} />
-        <Route path="/vendas/new" element={<Vendas />} />
-        <Route path="/vendas/:id" element={<Vendas />} />
+        <Route path="/vendas/new" element={<VendasCreate />} />
+        <Route path="/vendas/:id" element={<VendasDetalhes />} />
+        <Route path="/vendas/:id/status" element={<VendasAtualizarStatus />} />
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/eventos/new" element={<EventoCreate />} />
         <Route path="/eventos/:id" element={<EventoDetalhes />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );

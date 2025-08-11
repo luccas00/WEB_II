@@ -1,5 +1,6 @@
 package br.ufop.edu.web2.ticket.sales.controllers;
 
+import br.ufop.edu.web2.ticket.sales.dtos.events.EventsRecordDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.external.UserDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.CreateSalesDTO;
 import br.ufop.edu.web2.ticket.sales.dtos.sales.DeleteSalesDTO;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -34,6 +36,12 @@ public class SalesController {
 
         return ResponseEntity.ok(list);
 
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SalesRecordDTO> getSaleById(@PathVariable UUID id) {
+        SalesRecordDTO dto = salesService.getSaleById(id);
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping

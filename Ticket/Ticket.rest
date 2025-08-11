@@ -1,5 +1,5 @@
 ### ROOT – Health Check
-GET http://localhost:3000
+GET http://localhost:3000/
 
 ### Encrypt Password
 POST http://localhost:3000/encrypt
