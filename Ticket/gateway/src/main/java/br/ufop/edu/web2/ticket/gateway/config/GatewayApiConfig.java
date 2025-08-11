@@ -44,6 +44,10 @@ public class GatewayApiConfig {
                         p -> p.path("/sales/**")
                                 .uri("lb://sales")
                 )
+                .route("events",
+                        p -> p.path("/events/**")
+                                .uri("lb://sales")
+                )
                 .route("notifications-api",
                         p -> p.path("/api/notifications")
                                 .filters(f -> f.rewritePath("/api/notifications", "/notifications"))
