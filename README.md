@@ -36,12 +36,14 @@ A solução foi desenvolvida em **Java 17** com **Spring Boot**, seguindo boas p
 ---
 
 ## 🚪 Portas Padrão
-| Serviço                 | Porta |
-|-------------------------|-------|
-| User Application        | 3000  |
-| Sales Application       | 4000  |
-| Notification Application| 5000  |
-| React Frontend          | 1234  |
+| Serviço                   | Porta |
+|---------------------------|-------|
+| User Application          | 3000  |
+| Sales Application         | 4000  |
+| Notification Application  | 5000  |
+| React Frontend            | 1234  |
+| Gateway Application       | 8080  |
+| Eureka Server (Discovery) | 8761  |
 
 ---
 
